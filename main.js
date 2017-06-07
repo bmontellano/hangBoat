@@ -245,14 +245,14 @@ setTimeout(function(){
 function checkWinner(){
   checkComplete();
   console.log('checking winner')
-if ($boatDiv1.css('left')=='412.997px'||$boatDiv1.css('left')=='413px'){
-  $boatDiv1.fadeOut(1000,function(){
+if ($boatDiv1.css('left')=='413px'){
+    $boatDiv1.fadeOut(1000,function(){
     $divCon.css({'color':'blue', 'fontSize': '80px'});
     $divCon.text('Player 1 WINS!!!');
     });
 
 } else if ($boatDiv2.css('left')=='412.997px'||$boatDiv2.css('left')=='413px'){
-  $boatDiv2.fadeOut(1000,function(){
+    $boatDiv2.fadeOut(1000,function(){
     $divCon.css({'color':'darkred', 'fontSize': '80px'});
     $divCon.text('Player 2 WINS!!!');
     });
