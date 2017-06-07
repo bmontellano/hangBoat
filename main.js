@@ -196,7 +196,7 @@ if ($letter7.val() === 'c'){ gameLogic();$letter7.val('C');return }
 
 } else if ( questionTurns ===1){
   $questions.css({'fontSize':'24px'});
-  $questions.text("Fill in the blank : The Last of the ...." + "( hint : French and Indian War)")
+  $questions.text("Fill in the blank : The Last of the ...." + "(hint : French and Indian War)")
 if ($letter1.val() == 'm'){ gameLogic();$letter1.val('M');return }
 if ($letter2.val() == 'o'){ gameLogic();$letter2.val('O');return }
 if ($letter3.val() == 'h'){ gameLogic();$letter3.val('H');return }
