@@ -2,19 +2,19 @@ console.log('main.js connected!')
 var $divCon = $('.container')
 var $divConInit = $('.initialContainer')
 $divConInit.html('READ </br>--->');
-console.log($divCon.text() + "jquery is working!")
-//
+
+
+// Below is just a codeplay with jQuery .hover() class
 // $divCon.hover(enterGame,leaveGame)
-
-function enterGame(){
-  $divCon.css({'color':'rgba(17, 20, 178, .8)', 'fontSize': '40px'});
-  $divCon.text('You have entered the game zone!');
-}
-
-function leaveGame(){
-  $divCon.css({'color':'black', 'fontSize':'24px'})
-  $divCon.text("You've left the game zone!")
-}
+// function enterGame(){
+//   $divCon.css({'color':'rgba(17, 20, 178, .8)', 'fontSize': '40px'});
+//   $divCon.text('You have entered the game zone!');
+// }
+//
+// function leaveGame(){
+//   $divCon.css({'color':'black', 'fontSize':'24px'})
+//   $divCon.text("You've left the game zone!")
+// }
 
 //This is IF YOU WANT TO ADD KEYPRESS FUNCTIONALITY
 //....unfortunately I can't get it to work....
@@ -110,19 +110,21 @@ function questButton(){
   questionRandomizer();
   questions();
 } else if (questionTurns===2){
- var y = prompt("A lightining storm approaches! Answer correctly to avoid getting your papersail burned!! Which actress played identical red-headed freckled twins in the late 90's, and later became an infamous recipient of consecutive DUI's? ")
- if(z=='lindsey lohan'){
+ var y = prompt("A lightning storm approaches! Answer correctly to avoid getting your papersail burned!! Which actress played identical red-headed freckled twins in the late 90's, and later became an infamous recipient of consecutive DUI's? ")
+ if(z=='lindsey lohan'||z=='Lindsey Lohan'){
 
  } else{
+   alert("You've been struck by lightning, burn baby burn!")
    questButtonBadLogic();
  }
     questionRandomizer();
     questions()
   } else if (questionTurns===3){
-  var x = prompt("The Kraken has been released! Answer correctly or become consumed by the sea creature!! Which Irish actor portrays one of the best 007's in the franchise, aside from Sean Connery?")
-  if(z=='pierce brosnan'){
+  var x = prompt("The Kraken has been released! Answer correctly or become consumed by the sea creature!! Which Irish actor portrays one of the best 007's in the franchise, aside from Sean Connery (He's Scottish btw) ?")
+  if(z=='pierce brosnan'|| z=='Pierce Brosnan'){
 
   } else{
+    alert('The Kraken has dragged you towards the deep end of a kiddy pool!')
     questButtonBadLogic();
   }
   questionRandomizer();
