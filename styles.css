@@ -23,14 +23,11 @@ body {
   color: white;
   text-shadow: 2px 2px 2px black;
   border-radius: 10%;
-  font-size: 16.3px;
+  font-size: 15px;
 }
 
 .gameRules .gameRulesText{
   padding: 5px 0px 0px 5px
-}
-.gameRules:hover {
-
 }
 
 .container {
@@ -38,6 +35,14 @@ body {
   height:500px;
   border: 2px solid indigo;
   font-size: 24px;
+}
+
+.initialContainer{
+  color:#294f87;
+  font-size: 80px;
+  text-shadow: black 1px 1px 1px,
+               #b5d2ff -1px 2px 1px;
+  display: block;
 }
 
 .container:hover {
@@ -118,6 +123,11 @@ h1 {
   top: 520px;
   left:50px;
   padding: 3px;
+  color:#0094ff;
+  text-shadow: 1px 1px 1px black,
+               -1px 2px 1px black,
+               2px 2px 2px grey;
+
 }
 
 .category{

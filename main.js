@@ -1,5 +1,7 @@
 console.log('main.js connected!')
 var $divCon = $('.container')
+var $divConInit = $('.initialContainer')
+$divConInit.html('READ </br>--->');
 // $divCon.text("jquery is working!")
 //
 // $divCon.hover(enterGame,leaveGame)
@@ -95,7 +97,6 @@ function questButton(){
     questButtonLogic();
   }
   questionRandomizer();
-  // questionTurns += 1;
   questions();
 } else if (questionTurns===2){
  var y = prompt("A lightining storm approaches! Answer correctly to avoid getting your papersail burned!! What actress played identical red-headed freckled twins in the late 90's, and later became an infamous recipient of consecutive DUI's? ")
@@ -105,7 +106,6 @@ function questButton(){
    questButtonBadLogic();
  }
     questionRandomizer();
-    // questionTurns += 1;
     questions()
   }
 }
@@ -180,7 +180,8 @@ if ($letter7.val() == 'n'){ gameLogic();$letter7.val('N');return }
 if ($letter8.val() == 's'){ gameLogic();$letter8.val('S');return }
 
 } else if ( questionTurns ===2){
-  $questions.text("A young woman, (hint:Resident Evil's heroine ), crashes into a cab driver's (hint: Doesn't die easy) world and asks 'Help Meee' in what 1995 future flick?")
+  $questions.css({'fontSize':'22px'});
+  $questions.text("A young woman (hint:Resident Evil's heroine) crashes into a cab driver's (hint: Doesn't die easy) world and asks 'Help Meee' in what 1995 future flick?")
 if ($letter1.val() == 'f'){ gameLogic();$letter1.val('F');return }
 if ($letter2.val() == 'i'){ gameLogic();$letter2.val('I');return }
 if ($letter3.val() == 'f'){ gameLogic();$letter3.val('F');return }
@@ -196,8 +197,14 @@ if ($letter12.val() == 't'){ gameLogic();$letter12.val('T');return }
   }
   turner();
 }
+
 questions();
 questions();
+setTimeout(function(){
+  $divConInit.fadeOut(1000)
+},1000, function(){$divConInit.remove();})
+
+
 
 function checkWinner(){
   console.log('checking winner')
