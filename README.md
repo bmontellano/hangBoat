@@ -1,7 +1,7 @@
 # <p style= 'color: blue'>hangBoat</p>
 This is my project#1 game!
 
-##Technologies and Approach
+## Technologies and Approach
 HTML, CSS, Vanilla Javascript and the jQuery library were all used to create this web-based game! </br>
 The game was created by first building the game board using 'div' block elements and then CSS to create desired dimensions and effects. </br>
 <b>Google Fonts</b> was used to style the game, and the CSS text-shadow attribute was sprinkled around the board for <i>cool factor.</i></br>
