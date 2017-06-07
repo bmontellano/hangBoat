@@ -245,7 +245,7 @@ setTimeout(function(){
 function checkWinner(){
   checkComplete();
   console.log('checking winner')
-if ($boatDiv1.css('left')=='413px'){
+if ($boatDiv1.css('left')=='412.997px'||$boatDiv1.css('left')=='413px'){
     $boatDiv1.fadeOut(1000,function(){
     $divCon.css({'color':'blue', 'fontSize': '80px'});
     $divCon.text('Player 1 WINS!!!');
