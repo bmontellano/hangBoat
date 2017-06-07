@@ -14,7 +14,6 @@ function leaveGame(){
   $divCon.text("You've left the game zone!")
 }
 
-
 //This is IF YOU WANT TO ADD KEYPRESS FUNCTIONALITY
 //....unfortunately I can't get it to work....
 // var $boatDiv1 = $('.boatDiv1')
@@ -25,13 +24,14 @@ function leaveGame(){
 //     }
 // });
 
-
 var $boatDiv1 = $('.boatDiv1')
 $boatDiv1.on('click', moveRight1)
 function moveRight1(){
   console.log('boat has been clicked!')
   $boatDiv1.animate({'left':'+=40px'}, 800,checkWinner)
-
+}
+function moveRight3(){
+  $boatDiv1.animate({'left':'-=40px'}, 800,checkWinner)
 }
 
 var $boatDiv2 = $('.boatDiv2')
@@ -39,6 +39,9 @@ $boatDiv2.on('click', moveRight2)
 function moveRight2(){
   console.log('boat has been clicked!')
 $boatDiv2.animate({'left':'+=40px'}, 800,checkWinner);
+}
+function moveRight4(){
+  $boatDiv2.animate({'left':'-=40px'}, 800,checkWinner)
 }
 
 var $questionButton = $('.questionButton')
@@ -56,7 +59,6 @@ var $letter11 = $('.letter11')
 var $letter12 = $('.letter12')
 
 var turns = 0;
-var questionTurns = 0;
 
 $questionButton.on('click',questButton)
 
@@ -70,6 +72,13 @@ function questButtonLogic(){
 }
 }
 
+function questButtonBadLogic(){
+  if(turns%2===0){
+      moveRight3();
+}else {
+      moveRight4();
+    }
+}
 
 function questButton(){
   if(questionTurns===0){
@@ -77,17 +86,28 @@ function questButton(){
     if(t=='jaws'){
       questButtonLogic();
     }
-
-   questionTurns += 1;
+    questionRandomizer();
+  //  questionTurns += 1;
    questions();
  } else if (questionTurns===1){
  var z = prompt("You've entered Bermuda's triangle. Answer the question correctly to teleport closer to the island!What movie is about blue creatures and an element called unobtanium?")
   if(z=='avatar'){
     questButtonLogic();
   }
-  questionTurns += 1;
+  questionRandomizer();
+  // questionTurns += 1;
   questions();
+} else if (questionTurns===2){
+ var y = prompt("A lightining storm approaches! Answer correctly to avoid getting your papersail burned!! What actress played identical red-headed freckled twins in the late 90's, and later became an infamous recipient of consecutive DUI's? ")
+ if(z=='lindsey lohan'){
+
+ } else{
+   questButtonBadLogic();
  }
+    questionRandomizer();
+    // questionTurns += 1;
+    questions()
+  }
 }
 
 var $playerTurn = $('.playerTurn')
@@ -96,13 +116,11 @@ function turner(){
 if (turns%2===0){
   $playerTurn.text("PLAYER 1's TURN!")
   $playerTurn.css({'border': '2px solid blue', 'color':'blue','padding': '5px 0px 0px 5px'})
-  // $playerTurnD.css({'padding': '5px 0px 0px 5px'})
 } else{
   $playerTurn.text("PLAYER 2's TURN!")
   $playerTurn.css({'border': '2px solid darkred', 'color':'darkred','padding': '5px 0px 0px 5px'})
 }
 };
-
 
 $letter1.change(questions);
 $letter2.change(questions);
@@ -125,7 +143,18 @@ function gameLogic(){
   }
 }
 
-
+var questionTurns = Math.floor(Math.random()*3);
+function questionRandomizer(){
+  if (questionTurns===0){
+    questionTurns = 1;
+    return;
+  } else if (questionTurns===1){
+    questionTurns = 2;
+    return;
+  } else if (questionTurns===2){
+    questionTurns = 0;
+  }
+}
 
 var $questions = $('.questions')
 function questions(){
@@ -151,7 +180,7 @@ if ($letter7.val() == 'n'){ gameLogic();$letter7.val('N');return }
 if ($letter8.val() == 's'){ gameLogic();$letter8.val('S');return }
 
 } else if ( questionTurns ===2){
-  $questions.text("A young woman, who is a perfect being, crashes into a cab driver's world and asks 'Help Meee' in this 1995 future flick")
+  $questions.text("A young woman, (hint:Resident Evil's heroine ), crashes into a cab driver's (hint: Doesn't die easy) world and asks 'Help Meee' in what 1995 future flick?")
 if ($letter1.val() == 'f'){ gameLogic();$letter1.val('F');return }
 if ($letter2.val() == 'i'){ gameLogic();$letter2.val('I');return }
 if ($letter3.val() == 'f'){ gameLogic();$letter3.val('F');return }
@@ -173,9 +202,15 @@ questions();
 function checkWinner(){
   console.log('checking winner')
 if ($boatDiv1.css('left')=='412.997px'){
-  $boatDiv1.fadeOut(1000,function(){alert("Player 1 wins")});
+  $boatDiv1.fadeOut(1000,function(){
+    $divCon.css({'color':'blue', 'fontSize': '80px'});
+    $divCon.text('Player 1 WINS!!!');
+    });
 
 } else if ($boatDiv2.css('left')=='412.997px'){
-  $boatDiv2.fadeOut(1000,function(){alert("Player 2 wins")});
-}
+  $boatDiv2.fadeOut(1000,function(){
+    $divCon.css({'color':'darkred', 'fontSize': '80px'});
+    $divCon.text('Player 2 WINS!!!');
+    });
+  }
 }
