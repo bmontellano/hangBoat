@@ -111,7 +111,7 @@ function questButton(){
   questions();
 } else if (questionTurns===2){
  var y = prompt("A lightning storm approaches! Answer correctly to avoid getting your papersail burned!! Which actress played identical red-headed freckled twins in the late 90's, and later became an infamous recipient of consecutive DUI's? ")
- if(z=='lindsey lohan'||z=='Lindsey Lohan'){
+ if(y=='lindsey lohan'||y=='Lindsey Lohan'){
 
  } else{
    alert("You've been struck by lightning, burn baby burn!")
@@ -121,7 +121,7 @@ function questButton(){
     questions()
   } else if (questionTurns===3){
   var x = prompt("The Kraken has been released! Answer correctly or become consumed by the sea creature!! Which Irish actor portrays one of the best 007's in the franchise, aside from Sean Connery (He's Scottish btw) ?")
-  if(z=='pierce brosnan'|| z=='Pierce Brosnan'){
+  if(x=='pierce brosnan'|| x=='Pierce Brosnan'){
 
   } else{
     alert('The Kraken has dragged you towards the deep end of a kiddy pool!')
@@ -185,7 +185,7 @@ var $questions = $('.questions')
 function questions(){
 if (questionTurns === 0 ){
   $questions.css({'fontSize':'24px'});
-  $questions.text('What big boat breaks in half crossing the Atlantic ocean at the turn of the 20th century?')
+  $questions.text('What unsinkable boat breaks in half crossing the Atlantic ocean at the turn of the 20th century?')
 if ($letter1.val() === 't'){ gameLogic();$letter1.val('T');return }
 if ($letter2.val() === 'i'){ gameLogic();$letter2.val('I');return }
 if ($letter3.val() === 't'){ gameLogic();$letter3.val('T');return }
@@ -239,8 +239,6 @@ questions();
 setTimeout(function(){
   $divConInit.fadeOut(1000)
 },1000, function(){$divConInit.remove();})
-
-
 
 function checkWinner(){
   checkComplete();
