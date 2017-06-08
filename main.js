@@ -244,13 +244,19 @@ function checkWinner(){
   checkComplete();
   console.log('checking winner')
 if ($boatDiv1.css('left')=='412.997px'||$boatDiv1.css('left')=='413px'){
-    $boatDiv1.fadeOut(1000,function(){
+    $boatDiv1.html('<img src="bluePaperPlane.png">')
+    $boatDiv1.animate({'left':'+=500px','bottom':'+=200','opacity':'0.2','height':'200px','width':'200px'}, 1200,function(){
     $divCon.css({'color':'blue', 'fontSize': '80px'});
     $divCon.text('Player 1 WINS!!!');
     });
+    // $boatDiv1.fadeOut(1000,function(){
+    // $divCon.css({'color':'blue', 'fontSize': '80px'});
+    // $divCon.text('Player 1 WINS!!!');
+    // });
 
 } else if ($boatDiv2.css('left')=='412.997px'||$boatDiv2.css('left')=='413px'){
-    $boatDiv2.fadeOut(1000,function(){
+    $boatDiv2.html('<img src="redPaperPlane.png">')
+    $boatDiv2.animate({'left':'+=500px','bottom':'+=250','opacity':'0.2','height':'200px','width':'200px'}, 1200,function(){
     $divCon.css({'color':'darkred', 'fontSize': '80px'});
     $divCon.text('Player 2 WINS!!!');
     });
