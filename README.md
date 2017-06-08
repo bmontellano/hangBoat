@@ -16,8 +16,9 @@ The <i><b>objective of the game</i></b> is to move your paper boat into the isla
 ## <p style= 'color: #5f0f82'>Bugs and future additions</p>
 BUGS: </br> 
 1. At page load, players are directed to read the game rules and elements are seemingly overlapping, caused by elements having absolute positions. This is quickly removed after 2 seconds and the game board is correctly readjusted, but it would be nice if elements moved smoothly from the get-go. </br>
+**UPDATE** Bug fixed by making the disappearing directions CSS position:absolute ^_^ </br>
 2. Letters can be re-entered into the input fields moving your boat forward again, when it's not supposed to. </br>
-</br></br>
+</br>
 DREAM ADDITIONS: </br>
 1. Boost game content by adding questions.</br>
 2. Clean up code by consolidating and getting rid of unnecessary functions.</br>
