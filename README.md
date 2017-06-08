@@ -1,5 +1,6 @@
 # <p style= 'color: blue'>hangBoat</p>
-This is my project#1 game!
+This is my project#1 game!</br>
+<a href='https://bmontellano.github.io/hangBoat/'>https://bmontellano.github.io/hangBoat/</a>
 
 ## Technologies and Approach
 HTML, CSS, Vanilla Javascript and the jQuery library were all used to create this web-based game! </br>
