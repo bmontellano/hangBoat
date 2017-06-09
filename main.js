@@ -106,8 +106,8 @@ function questButton(){
    alert("You've been struck by lightning, burn baby burn!")
    questButtonBadLogic();
  }
-    questionRandomizer();
-    questions()
+  questionRandomizer();
+  questions()
   } else if (questionTurns===3){
   var x = prompt("The Kraken has been released! Answer correctly or become consumed by the sea creature!! Which Irish actor portrays one of the best 007's in the franchise, aside from Sean Connery (He's Scottish btw) ?")
     if(x=='pierce brosnan'|| x=='Pierce Brosnan'){
@@ -121,6 +121,7 @@ function questButton(){
   }
 }
 
+//Determine Player turn
 var $playerTurn = $('.playerTurn')
 function turner(){
   turns +=1;
@@ -133,6 +134,7 @@ if (turns%2===0){
 }
 };
 
+//Listens to change input
 $letter1.change(questions);
 $letter2.change(questions);
 $letter3.change(questions);
@@ -146,6 +148,7 @@ $letter10.change(questions);
 $letter11.change(questions);
 $letter12.change(questions);
 
+//Determines who made correct answer
 function gameLogic(){
     if(turns%2===0){
         moveRight1();turner();
@@ -154,6 +157,7 @@ function gameLogic(){
   }
 }
 
+//Randomizes question on Window load
 var questionTurns = Math.floor(Math.random()*4);
 function questionRandomizer(){
          if (questionTurns===0){
@@ -170,6 +174,7 @@ function questionRandomizer(){
   }
 }
 
+//Question Logic
 var $questions = $('.questions')
 function questions(){
 if (questionTurns === 0 ){
