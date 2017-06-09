@@ -1,31 +1,19 @@
+//Check if main.js is connected
+//jQuery being used to select items and manipulate DOM
 console.log('main.js connected!')
 var $divCon = $('.container')
+//At the start of the game, players are prompted to read rules
 var $divConInit = $('.initialContainer')
 $divConInit.html('READ </br>--->');
+//Then the READ ARROW is faded and removed from DOM
+setTimeout(function(){
+  $divConInit.fadeOut(1000);
+  },1000, function(){$divConInit.remove();})
 
+//Players turn
+var turns = 0;
 
-// Below is just a codeplay with jQuery .hover() class
-// $divCon.hover(enterGame,leaveGame)
-// function enterGame(){
-//   $divCon.css({'color':'rgba(17, 20, 178, .8)', 'fontSize': '40px'});
-//   $divCon.text('You have entered the game zone!');
-// }
-//
-// function leaveGame(){
-//   $divCon.css({'color':'black', 'fontSize':'24px'})
-//   $divCon.text("You've left the game zone!")
-// }
-
-//This is IF YOU WANT TO ADD KEYPRESS FUNCTIONALITY
-//....unfortunately I can't get it to work....
-// var $boatDiv1 = $('.boatDiv1')
-// $boatDiv1.on('keypress', function (q) {
-//     var key = q.which || q.keyCode;
-//     if (key === 81) { // 81 is q
-//       moveRight1();
-//     }
-// });
-
+//Player 1 move function
 var $boatDiv1 = $('.boatDiv1')
 $boatDiv1.on('click', moveRight1)
 function moveRight1(){
@@ -36,6 +24,7 @@ function moveRight3(){
   $boatDiv1.animate({'left':'-=40px'}, 800,checkWinner)
 }
 
+//Player 2 move function
 var $boatDiv2 = $('.boatDiv2')
 $boatDiv2.on('click', moveRight2)
 function moveRight2(){
@@ -46,6 +35,7 @@ function moveRight4(){
   $boatDiv2.animate({'left':'-=40px'}, 800,checkWinner)
 }
 
+//jQuery Selectors for each input
 var $questionButton = $('.questionButton')
 var $letter1 = $('.letter1')
 var $letter2 = $('.letter2')
@@ -60,19 +50,18 @@ var $letter10 = $('.letter10')
 var $letter11 = $('.letter11')
 var $letter12 = $('.letter12')
 
-
+//Resets the input for next question
 var $input = $('input')
-
 function gameReset(){
   for(var i=0 ; i<$input.length ; i+=1 ){
     $input.eq(i).val("");
   }
 }
 
-var turns = 0;
-
+//On click, generates new questions and prompts bonus question
 $questionButton.on('click',questButton)
 
+//Grants movement to player who gets the answer correct
 function questButtonLogic(){
   if(turns%2===0){
       moveRight1();
@@ -80,10 +69,10 @@ function questButtonLogic(){
 }else {
       moveRight2();
       moveRight2();
-}
+    }
 }
 
-
+//Grants negative movement to players who answer incorrectly
 function questButtonBadLogic(){
   if(turns%2===0){
       moveRight3();
@@ -92,6 +81,7 @@ function questButtonBadLogic(){
     }
 }
 
+//Initiates new question and bonus questions
 function questButton(){
   gameReset();
   if(questionTurns===0){
@@ -100,8 +90,7 @@ function questButton(){
       questButtonLogic();
     }
     questionRandomizer();
-  //  questionTurns += 1;
-   questions();
+    questions();
  } else if (questionTurns===1){
  var z = prompt("You've entered Bermuda's triangle. Answer the question correctly to teleport closer to the island!What movie is about blue creatures and an element called unobtanium?")
   if(z=='avatar'){
@@ -117,6 +106,8 @@ function questButton(){
    alert("You've been struck by lightning, burn baby burn!")
    questButtonBadLogic();
  }
+
+ //Changes the question linearly
     questionRandomizer();
     questions()
   } else if (questionTurns===3){
@@ -132,6 +123,7 @@ function questButton(){
   }
 }
 
+//Determines player turn
 var $playerTurn = $('.playerTurn')
 function turner(){
   turns +=1;
@@ -144,6 +136,7 @@ if (turns%2===0){
 }
 };
 
+//Listens to change in input
 $letter1.change(questions);
 $letter2.change(questions);
 $letter3.change(questions);
@@ -157,6 +150,7 @@ $letter10.change(questions);
 $letter11.change(questions);
 $letter12.change(questions);
 
+//Determines who made a right answer
 function gameLogic(){
     if(turns%2===0){
         moveRight1();turner();
@@ -165,6 +159,7 @@ function gameLogic(){
   }
 }
 
+//Randomize the question on Window load
 var questionTurns = Math.floor(Math.random()*4);
 function questionRandomizer(){
          if (questionTurns===0){
@@ -181,6 +176,7 @@ function questionRandomizer(){
   }
 }
 
+//Question Logic
 var $questions = $('.questions')
 function questions(){
 if (questionTurns === 0 ){
@@ -234,12 +230,20 @@ if ($letter12.val() == 't'){ gameLogic();$letter12.val('T');return }
   turner();
 }
 
+//This prepares the game board
 questions();
 questions();
-setTimeout(function(){
-  $divConInit.fadeOut(1000)
-},1000, function(){$divConInit.remove();})
 
+
+
+
+// Below was the previous win animation:
+// $boatDiv1.fadeOut(1000,function(){
+// $divCon.css({'color':'blue', 'fontSize': '80px'});
+// $divCon.text('Player 1 WINS!!!');
+// });
+
+//Check if player has won, and if so, launch win animation
 function checkWinner(){
   checkComplete();
   console.log('checking winner')
@@ -249,11 +253,6 @@ if ($boatDiv1.css('left')=='412.997px'||$boatDiv1.css('left')=='413px'){
     $divCon.css({'color':'blue', 'fontSize': '80px'});
     $divCon.text('Player 1 WINS!!!');
     });
-    // $boatDiv1.fadeOut(1000,function(){
-    // $divCon.css({'color':'blue', 'fontSize': '80px'});
-    // $divCon.text('Player 1 WINS!!!');
-    // });
-
 } else if ($boatDiv2.css('left')=='412.997px'||$boatDiv2.css('left')=='413px'){
     $boatDiv2.html('<img src="redPaperPlane.png">')
     $boatDiv2.animate({'left':'+=500px','top':'-=300','opacity':'0.2','height':'200px','width':'200px'}, 1200,function(){
@@ -263,6 +262,10 @@ if ($boatDiv1.css('left')=='412.997px'||$boatDiv1.css('left')=='413px'){
   }
 }
 
+
+
+//This checks if the word has been completed.
+//Also prompts the player to generate a new question.
 function checkComplete(){
   if ($letter1.val() === 'T' && $letter2.val() === 'I'&& $letter3.val() === 'T' && $letter4.val() === 'A' && $letter5.val() === 'N' && $letter6.val() === 'I' &&  $letter7.val() === 'C'){
     $questions.text("Cheers Captain! Word is done! Push the button, hehehe ^_^____^_^");
@@ -276,3 +279,25 @@ function checkComplete(){
     $questions.text("Ai, que rico! Word is completo! Push the button, hehehe ^_^____^_^");
   }
 }
+
+// Below is just a codeplay with jQuery .hover() class
+// $divCon.hover(enterGame,leaveGame)
+// function enterGame(){
+//   $divCon.css({'color':'rgba(17, 20, 178, .8)', 'fontSize': '40px'});
+//   $divCon.text('You have entered the game zone!');
+// }
+//
+// function leaveGame(){
+//   $divCon.css({'color':'black', 'fontSize':'24px'})
+//   $divCon.text("You've left the game zone!")
+// }
+
+//This is IF YOU WANT TO ADD KEYPRESS FUNCTIONALITY
+//....unfortunately I can't get it to work....
+// var $boatDiv1 = $('.boatDiv1')
+// $boatDiv1.on('keypress', function (q) {
+//     var key = q.which || q.keyCode;
+//     if (key === 81) { // 81 is q
+//       moveRight1();
+//     }
+// });
