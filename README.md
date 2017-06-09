@@ -24,7 +24,7 @@ DREAM ADDITIONS: </br>
 1. Boost game content by adding questions.</br>
 2. Clean up code by consolidating and getting rid of unnecessary functions.</br>
 3. Mark up code with comments to explain game functionality.</br>
-**Update** Game comments added!!!</br>
+**UPDATE** Game comments added!!!</br>
 4. Add more jQuery animations. </br>
 5. Add more bonus questions to increase the fun! </br>
 6. Use DOM manipulation to display bonus questions with a submit field instead of prompting the page.</br>

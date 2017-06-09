@@ -107,7 +107,24 @@ function questButton(){
    questButtonBadLogic();
  }
 
- //Changes the question linearly
+ //Randomize the question on Window load
+ var questionTurns = Math.floor(Math.random()*4);
+ function questionRandomizer(){
+          if (questionTurns===0){
+     questionTurns = 2;
+     return;
+   } else if (questionTurns===1){
+     questionTurns = 0;
+     return;
+   } else if (questionTurns===2){
+     questionTurns = 3;
+     return;
+   } else if (questionTurns===3){
+     questionTurns = 1
+   }
+ }
+
+ //Initializes questionRandomizer and changes the question linearly
     questionRandomizer();
     questions()
   } else if (questionTurns===3){
@@ -150,7 +167,7 @@ $letter10.change(questions);
 $letter11.change(questions);
 $letter12.change(questions);
 
-//Determines who made a right answer
+//Determines who made a correct answer
 function gameLogic(){
     if(turns%2===0){
         moveRight1();turner();
@@ -159,22 +176,7 @@ function gameLogic(){
   }
 }
 
-//Randomize the question on Window load
-var questionTurns = Math.floor(Math.random()*4);
-function questionRandomizer(){
-         if (questionTurns===0){
-    questionTurns = 2;
-    return;
-  } else if (questionTurns===1){
-    questionTurns = 0;
-    return;
-  } else if (questionTurns===2){
-    questionTurns = 3;
-    return;
-  } else if (questionTurns===3){
-    questionTurns = 1
-  }
-}
+
 
 //Question Logic
 var $questions = $('.questions')
@@ -230,6 +232,22 @@ if ($letter12.val() == 't'){ gameLogic();$letter12.val('T');return }
   turner();
 }
 
+//This checks if the word has been completed.
+//Also prompts the player to generate a new question.
+function checkComplete(){
+  if ($letter1.val() === 'T' && $letter2.val() === 'I'&& $letter3.val() === 'T' && $letter4.val() === 'A' && $letter5.val() === 'N' && $letter6.val() === 'I' &&  $letter7.val() === 'C'){
+    $questions.text("Cheers Captain! Word is done! Push the button, hehehe ^_^____^_^");
+  } else if ($letter1.val() === 'F' && $letter2.val() === 'I'&& $letter3.val() === 'F' && $letter4.val() === 'T' && $letter5.val() === 'H' && $letter6.val() === 'E' && $letter7.val()
+   === 'L' && $letter8.val() ==='E' && $letter9.val() === 'M' && $letter10.val() === 'E' && $letter11.val() === 'N' && $letter12.val() === 'T') {
+    $questions.text("You're Suave! Word is complete! Push the button, hehehe ^_^____^_^");
+   } else if ($letter1.val() === 'M' && $letter2.val() === 'O'&& $letter3.val() === 'H' && $letter4.val() === 'I' && $letter5.val() === 'C' && $letter6.val() === 'A' && $letter7.val()
+   === 'N'&& $letter8.val() ==='S') {
+    $questions.text("Smooth sailing! Word is fulfilled! Push the button, hehehe ^_^____^_^");
+  } else if ($letter1.val() === 'M' && $letter2.val() === 'A'&& $letter3.val() === 'T' && $letter4.val() === 'R' && $letter5.val() === 'I' && $letter6.val() === 'X'){
+    $questions.text("Ai, que rico! Word is completo! Push the button, hehehe ^_^____^_^");
+  }
+}
+
 //This prepares the game board
 questions();
 questions();
@@ -262,23 +280,6 @@ if ($boatDiv1.css('left')=='412.997px'||$boatDiv1.css('left')=='413px'){
   }
 }
 
-
-
-//This checks if the word has been completed.
-//Also prompts the player to generate a new question.
-function checkComplete(){
-  if ($letter1.val() === 'T' && $letter2.val() === 'I'&& $letter3.val() === 'T' && $letter4.val() === 'A' && $letter5.val() === 'N' && $letter6.val() === 'I' &&  $letter7.val() === 'C'){
-    $questions.text("Cheers Captain! Word is done! Push the button, hehehe ^_^____^_^");
-  } else if ($letter1.val() === 'F' && $letter2.val() === 'I'&& $letter3.val() === 'F' && $letter4.val() === 'T' && $letter5.val() === 'H' && $letter6.val() === 'E' && $letter7.val()
-   === 'L' && $letter8.val() ==='E' && $letter9.val() === 'M' && $letter10.val() === 'E' && $letter11.val() === 'N' && $letter12.val() === 'T') {
-    $questions.text("You're Suave! Word is complete! Push the button, hehehe ^_^____^_^");
-   } else if ($letter1.val() === 'M' && $letter2.val() === 'O'&& $letter3.val() === 'H' && $letter4.val() === 'I' && $letter5.val() === 'C' && $letter6.val() === 'A' && $letter7.val()
-   === 'N'&& $letter8.val() ==='S') {
-    $questions.text("Smooth sailing! Word is fulfilled! Push the button, hehehe ^_^____^_^");
-  } else if ($letter1.val() === 'M' && $letter2.val() === 'A'&& $letter3.val() === 'T' && $letter4.val() === 'R' && $letter5.val() === 'I' && $letter6.val() === 'X'){
-    $questions.text("Ai, que rico! Word is completo! Push the button, hehehe ^_^____^_^");
-  }
-}
 
 // Below is just a codeplay with jQuery .hover() class
 // $divCon.hover(enterGame,leaveGame)
