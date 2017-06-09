@@ -92,44 +92,25 @@ function questButton(){
     questionRandomizer();
     questions();
  } else if (questionTurns===1){
- var z = prompt("You've entered Bermuda's triangle. Answer the question correctly to teleport closer to the island!What movie is about blue creatures and an element called unobtanium?")
-  if(z=='avatar'){
-    questButtonLogic();
+   var z = prompt("You've entered Bermuda's triangle. Answer the question correctly to teleport closer to the island!What movie is about blue creatures and an element called unobtanium?")
+    if(z=='avatar'){
+      questButtonLogic();
   }
   questionRandomizer();
   questions();
 } else if (questionTurns===2){
  var y = prompt("A lightning storm approaches! Answer correctly to avoid getting your papersail burned!! Which actress played identical red-headed freckled twins in the late 90's, and later became an infamous recipient of consecutive DUI's? ")
- if(y=='lindsey lohan'||y=='Lindsey Lohan'){
+  if(y=='lindsey lohan'||y=='Lindsey Lohan'){
    alert('Oh Lindsey, I love you girl!')
  } else{
    alert("You've been struck by lightning, burn baby burn!")
    questButtonBadLogic();
  }
-
- //Randomize the question on Window load
- var questionTurns = Math.floor(Math.random()*4);
- function questionRandomizer(){
-          if (questionTurns===0){
-     questionTurns = 2;
-     return;
-   } else if (questionTurns===1){
-     questionTurns = 0;
-     return;
-   } else if (questionTurns===2){
-     questionTurns = 3;
-     return;
-   } else if (questionTurns===3){
-     questionTurns = 1
-   }
- }
-
- //Initializes questionRandomizer and changes the question linearly
     questionRandomizer();
     questions()
   } else if (questionTurns===3){
   var x = prompt("The Kraken has been released! Answer correctly or become consumed by the sea creature!! Which Irish actor portrays one of the best 007's in the franchise, aside from Sean Connery (He's Scottish btw) ?")
-  if(x=='pierce brosnan'|| x=='Pierce Brosnan'){
+    if(x=='pierce brosnan'|| x=='Pierce Brosnan'){
         alert('Tonight, the Kraken goes hungry.')
   } else{
     alert('The Kraken has dragged you towards the deep end of a kiddy pool!')
@@ -140,7 +121,6 @@ function questButton(){
   }
 }
 
-//Determines player turn
 var $playerTurn = $('.playerTurn')
 function turner(){
   turns +=1;
@@ -153,7 +133,6 @@ if (turns%2===0){
 }
 };
 
-//Listens to change in input
 $letter1.change(questions);
 $letter2.change(questions);
 $letter3.change(questions);
@@ -167,7 +146,6 @@ $letter10.change(questions);
 $letter11.change(questions);
 $letter12.change(questions);
 
-//Determines who made a correct answer
 function gameLogic(){
     if(turns%2===0){
         moveRight1();turner();
@@ -176,9 +154,22 @@ function gameLogic(){
   }
 }
 
+var questionTurns = Math.floor(Math.random()*4);
+function questionRandomizer(){
+         if (questionTurns===0){
+    questionTurns = 2;
+    return;
+  } else if (questionTurns===1){
+    questionTurns = 0;
+    return;
+  } else if (questionTurns===2){
+    questionTurns = 3;
+    return;
+  } else if (questionTurns===3){
+    questionTurns = 1
+  }
+}
 
-
-//Question Logic
 var $questions = $('.questions')
 function questions(){
 if (questionTurns === 0 ){
@@ -232,22 +223,6 @@ if ($letter12.val() == 't'){ gameLogic();$letter12.val('T');return }
   turner();
 }
 
-//This checks if the word has been completed.
-//Also prompts the player to generate a new question.
-function checkComplete(){
-  if ($letter1.val() === 'T' && $letter2.val() === 'I'&& $letter3.val() === 'T' && $letter4.val() === 'A' && $letter5.val() === 'N' && $letter6.val() === 'I' &&  $letter7.val() === 'C'){
-    $questions.text("Cheers Captain! Word is done! Push the button, hehehe ^_^____^_^");
-  } else if ($letter1.val() === 'F' && $letter2.val() === 'I'&& $letter3.val() === 'F' && $letter4.val() === 'T' && $letter5.val() === 'H' && $letter6.val() === 'E' && $letter7.val()
-   === 'L' && $letter8.val() ==='E' && $letter9.val() === 'M' && $letter10.val() === 'E' && $letter11.val() === 'N' && $letter12.val() === 'T') {
-    $questions.text("You're Suave! Word is complete! Push the button, hehehe ^_^____^_^");
-   } else if ($letter1.val() === 'M' && $letter2.val() === 'O'&& $letter3.val() === 'H' && $letter4.val() === 'I' && $letter5.val() === 'C' && $letter6.val() === 'A' && $letter7.val()
-   === 'N'&& $letter8.val() ==='S') {
-    $questions.text("Smooth sailing! Word is fulfilled! Push the button, hehehe ^_^____^_^");
-  } else if ($letter1.val() === 'M' && $letter2.val() === 'A'&& $letter3.val() === 'T' && $letter4.val() === 'R' && $letter5.val() === 'I' && $letter6.val() === 'X'){
-    $questions.text("Ai, que rico! Word is completo! Push the button, hehehe ^_^____^_^");
-  }
-}
-
 //This prepares the game board
 questions();
 questions();
@@ -280,6 +255,23 @@ if ($boatDiv1.css('left')=='412.997px'||$boatDiv1.css('left')=='413px'){
   }
 }
 
+
+
+//This checks if the word has been completed.
+//Also prompts the player to generate a new question.
+function checkComplete(){
+  if ($letter1.val() === 'T' && $letter2.val() === 'I'&& $letter3.val() === 'T' && $letter4.val() === 'A' && $letter5.val() === 'N' && $letter6.val() === 'I' &&  $letter7.val() === 'C'){
+    $questions.text("Cheers Captain! Word is done! Push the button, hehehe ^_^____^_^");
+  } else if ($letter1.val() === 'F' && $letter2.val() === 'I'&& $letter3.val() === 'F' && $letter4.val() === 'T' && $letter5.val() === 'H' && $letter6.val() === 'E' && $letter7.val()
+   === 'L' && $letter8.val() ==='E' && $letter9.val() === 'M' && $letter10.val() === 'E' && $letter11.val() === 'N' && $letter12.val() === 'T') {
+    $questions.text("You're Suave! Word is complete! Push the button, hehehe ^_^____^_^");
+   } else if ($letter1.val() === 'M' && $letter2.val() === 'O'&& $letter3.val() === 'H' && $letter4.val() === 'I' && $letter5.val() === 'C' && $letter6.val() === 'A' && $letter7.val()
+   === 'N'&& $letter8.val() ==='S') {
+    $questions.text("Smooth sailing! Word is fulfilled! Push the button, hehehe ^_^____^_^");
+  } else if ($letter1.val() === 'M' && $letter2.val() === 'A'&& $letter3.val() === 'T' && $letter4.val() === 'R' && $letter5.val() === 'I' && $letter6.val() === 'X'){
+    $questions.text("Ai, que rico! Word is completo! Push the button, hehehe ^_^____^_^");
+  }
+}
 
 // Below is just a codeplay with jQuery .hover() class
 // $divCon.hover(enterGame,leaveGame)
