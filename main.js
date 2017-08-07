@@ -12,6 +12,18 @@ setTimeout(function(){
 
 //Players turn
 var turns = 0;
+var xBomb = 0;
+//Easter Egg for the island
+var $bIsland = $('.boatDiv1')
+$bIsland.on('click', () => {
+  xBomb +=1; console.log("Added 1 to xBomb:",xBomb)
+  if ( xBomb === 10) {
+    $bIsland.animate({
+      height: '+=5000px',
+      width: '+=5000px'
+    },3000, () => console.log("Now the game is over") )
+  }
+})
 
 //Player 1 move function
 var $boatDiv1 = $('.boatDiv1')
