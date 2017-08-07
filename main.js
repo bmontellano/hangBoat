@@ -15,15 +15,18 @@ var turns = 0;
 var xBomb = 0;
 //Easter Egg for the island
 var $bIsland = $('.island')
-$bIsland.on('click', function() {
+$bIsland.on('click', () => {
   xBomb +=1; console.log("Added 1 to xBomb:",xBomb)
   if ( xBomb === 10) {
     $bIsland.animate({
+      left: '-=2000px',
+      top: '-=2000px',
       height: '+=5000px',
       width: '+=5000px'
-    },3000, function(){
-      console.log("Now the game is over")
-    } 
+    },3000, () => {
+       $('body').css('fontSize','40px').text("Now the game is over")
+
+     }
   )}
 })
 
